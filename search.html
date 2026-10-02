@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi" data-root="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tìm kiếm | HọcFree</title>
+<meta name="description" content="Tìm kiếm bài viết trên HọcFree.">
+<link rel="canonical" href="https://hocfree.vn/search.html">
+<meta property="og:site_name" content="HọcFree">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tìm kiếm">
+<meta property="og:description" content="Tìm kiếm bài viết trên HọcFree.">
+<meta property="og:url" content="https://hocfree.vn/search.html">
+<meta property="og:image" content="https://hocfree.vn/assets/images/og-default.jpg">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#16181d">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=20261002">
+<script>try{var t=localStorage.getItem('hf-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}</script>
+<meta name="robots" content="noindex">
+</head>
+<body>
+<a class="skip-link" href="#main">Bỏ qua đến nội dung</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <button class="icon-btn burger" aria-label="Mở menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="logo" href="" aria-label="HọcFree – Trang chủ"><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="var(--accent)"/><path d="M11 13l-5 7 5 7M29 13l5 7-5 7M23 10l-6 20" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học<b>Free</b></span></a>
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul><li><a href="kien-thuc-lap-trinh/">Kiến thức lập trình</a></li><li><a href="ngoai-ngu/">Ngoại ngữ</a></li><li><a href="blog/">Blog</a></li></ul>
+      </nav>
+      <div class="topbar-actions">
+        <button class="icon-btn search-toggle" aria-label="Tìm kiếm"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+        <button class="icon-btn theme-toggle" aria-label="Đổi giao diện sáng/tối"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="trending">
+    <div class="container trending-inner">
+      <span class="trending-label">Xu hướng</span>
+      <div class="trending-links"><a href="search.html?q=HTML">HTML</a><a href="search.html?q=JavaScript">JavaScript</a><a href="search.html?q=Python">Python</a><a href="search.html?q=Git">Git</a><a href="search.html?q=SQL">SQL</a><a href="search.html?q=IELTS">IELTS</a><a href="search.html?q=Tiếng Hàn">Tiếng Hàn</a><a href="search.html?q=VS Code">VS Code</a><a href="search.html?q=AI">AI</a></div>
+    </div>
+  </div>
+</header>
+<div class="search-panel" hidden>
+  <div class="container">
+    <form class="search-form" action="search.html" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Tìm bài viết: JavaScript, IELTS, Git…" autocomplete="off" aria-label="Từ khóa tìm kiếm">
+      <button type="button" class="icon-btn search-close" aria-label="Đóng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </form>
+    <div class="search-suggest"></div>
+  </div>
+</div>
+<main id="main">
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="">Trang chủ</a><span>/</span><span>Tìm kiếm</span></nav>
+      <h1>Tìm kiếm</h1>
+      <form class="search-form big" action="search.html" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" name="q" id="search-page-input" placeholder="Nhập từ khóa…" aria-label="Từ khóa tìm kiếm">
+        <button class="btn" type="submit">Tìm</button>
+      </form>
+    </div>
+  </div>
+  <div class="container layout">
+    <div class="content">
+      <p class="search-summary" id="search-summary"></p>
+      <div class="post-list" id="search-results"></div>
+    </div>
+    <aside class="sidebar">
+  <section class="widget">
+    <h2 class="widget-title">Đọc nhiều nhất</h2>
+    <ol class="popular"><li><a href="kien-thuc-lap-trinh/git-github-cho-nguoi-moi.html"><span class="num">1</span><span class="t">Git &amp; GitHub từ A đến Z: hướng dẫn chi tiết cho người mới</span></a></li><li><a href="kien-thuc-lap-trinh/javascript-es6-tinh-nang.html"><span class="num">2</span><span class="t">JavaScript ES6+: 10 tính năng hiện đại bạn bắt buộc phải biết</span></a></li><li><a href="ngoai-ngu/tieng-anh-cho-lap-trinh-vien.html"><span class="num">3</span><span class="t">Tiếng Anh cho lập trình viên: 50 thuật ngữ IT bạn gặp mỗi ngày</span></a></li><li><a href="blog/github-pages-ten-mien-rieng.html"><span class="num">4</span><span class="t">Làm website miễn phí với GitHub Pages và gắn tên miền riêng</span></a></li><li><a href="kien-thuc-lap-trinh/python-cho-nguoi-moi.html"><span class="num">5</span><span class="t">Python cho người mới: biến, câu điều kiện, vòng lặp và hàm</span></a></li></ol>
+  </section>
+  <section class="widget">
+    <h2 class="widget-title">Chuyên mục</h2>
+    <ul class="cat-list"><li><a href="kien-thuc-lap-trinh/"><span>Kiến thức lập trình</span><span class="count">5</span></a></li><li><a href="ngoai-ngu/"><span>Ngoại ngữ</span><span class="count">5</span></a></li><li><a href="blog/"><span>Blog</span><span class="count">5</span></a></li></ul>
+  </section>
+  <section class="widget widget-about">
+    <h2 class="widget-title">Về HọcFree</h2>
+    <p>Nơi chia sẻ <strong>miễn phí</strong> kiến thức lập trình, ngoại ngữ và kinh nghiệm tự học dành cho người Việt. Không quảng cáo, không thu phí.</p>
+    <a class="btn" href="gioi-thieu.html">Tìm hiểu thêm</a>
+  </section>
+  <section class="widget">
+    <h2 class="widget-title">Thẻ</h2>
+    <div class="tags"><a class="tag" href="search.html?q=AI">AI</a><a class="tag" href="search.html?q=Anki">Anki</a><a class="tag" href="search.html?q=CSS">CSS</a><a class="tag" href="search.html?q=Công cụ">Công cụ</a><a class="tag" href="search.html?q=Database">Database</a><a class="tag" href="search.html?q=ES6">ES6</a><a class="tag" href="search.html?q=Frontend">Frontend</a><a class="tag" href="search.html?q=Git">Git</a><a class="tag" href="search.html?q=GitHub">GitHub</a><a class="tag" href="search.html?q=GitHub Pages">GitHub Pages</a><a class="tag" href="search.html?q=Hangul">Hangul</a><a class="tag" href="search.html?q=Hosting">Hosting</a><a class="tag" href="search.html?q=HTML">HTML</a><a class="tag" href="search.html?q=IELTS">IELTS</a><a class="tag" href="search.html?q=IT English">IT English</a><a class="tag" href="search.html?q=JavaScript">JavaScript</a><a class="tag" href="search.html?q=Kinh nghiệm">Kinh nghiệm</a><a class="tag" href="search.html?q=Luyện nghe">Luyện nghe</a><a class="tag" href="search.html?q=Lộ trình">Lộ trình</a><a class="tag" href="search.html?q=Nhập môn">Nhập môn</a><a class="tag" href="search.html?q=Năng suất">Năng suất</a><a class="tag" href="search.html?q=Phát âm">Phát âm</a><a class="tag" href="search.html?q=Phương pháp học">Phương pháp học</a><a class="tag" href="search.html?q=Python">Python</a><a class="tag" href="search.html?q=SQL">SQL</a><a class="tag" href="search.html?q=Tiếng Anh">Tiếng Anh</a><a class="tag" href="search.html?q=Tiếng Hàn">Tiếng Hàn</a><a class="tag" href="search.html?q=Tên miền">Tên miền</a><a class="tag" href="search.html?q=Từ vựng">Từ vựng</a><a class="tag" href="search.html?q=Tự học">Tự học</a><a class="tag" href="search.html?q=VS Code">VS Code</a><a class="tag" href="search.html?q=Web cơ bản">Web cơ bản</a></div>
+  </section>
+</aside>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a class="logo" href=""><svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="var(--accent)"/><path d="M11 13l-5 7 5 7M29 13l5 7-5 7M23 10l-6 20" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Học<b>Free</b></span></a>
+      <p>HọcFree.vn – chia sẻ miễn phí kiến thức lập trình, ngoại ngữ và kinh nghiệm tự học dành cho người Việt.</p>
+    </div>
+    <div>
+      <h3>Chuyên mục</h3>
+      <ul><li><a href="kien-thuc-lap-trinh/">Kiến thức lập trình</a></li><li><a href="ngoai-ngu/">Ngoại ngữ</a></li><li><a href="blog/">Blog</a></li></ul>
+    </div>
+    <div>
+      <h3>Bài mới</h3>
+      <ul><li><a href="blog/5-sai-lam-khi-tu-hoc-lap-trinh.html">5 sai lầm khiến bạn tự học lập trình mãi không tiến bộ</a></li><li><a href="kien-thuc-lap-trinh/hoc-html-css-co-ban.html">Học HTML &amp; CSS cơ bản: lộ trình 30 ngày cho người mới bắt đầu</a></li><li><a href="ngoai-ngu/tieng-anh-cho-lap-trinh-vien.html">Tiếng Anh cho lập trình viên: 50 thuật ngữ IT bạn gặp mỗi ngày</a></li><li><a href="kien-thuc-lap-trinh/javascript-es6-tinh-nang.html">JavaScript ES6+: 10 tính năng hiện đại bạn bắt buộc phải biết</a></li></ul>
+    </div>
+    <div>
+      <h3>HọcFree</h3>
+      <ul>
+        <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+        <li><a href="search.html">Tìm kiếm</a></li>
+        <li><a href="sitemap.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">© 2026 HọcFree.vn · Kiến thức là để chia sẻ.</div>
+  </div>
+</footer>
+<button class="to-top" aria-label="Lên đầu trang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+<script src="assets/js/search-data.js?v=20261002" defer></script>
+<script src="assets/js/main.js?v=20261002" defer></script>
+</body>
+</html>
