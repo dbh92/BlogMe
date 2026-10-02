@@ -128,7 +128,7 @@ def head(root, title, desc, canonical, image, og_type="website", extra=""):
 def header(root, active=""):
     active_attr = ' class="active" aria-current="page"'
     nav = "".join(
-        f'<li><a href="{root}{c["slug"]}/"{active_attr if c["slug"] == active else ""}>{e(c["name"])}</a></li>'
+        f'<li><a href="{root}{c["slug"]}/index.html"{active_attr if c["slug"] == active else ""}>{e(c["name"])}</a></li>'
         for c in DATA["categories"])
     trend = "".join(f'<a href="{root}search.html?q={e(t)}">{e(t)}</a>' for t in TRENDING)
     return f"""<div class="progress" aria-hidden="true"></div>
@@ -136,7 +136,7 @@ def header(root, active=""):
   <div class="topbar">
     <div class="container topbar-inner">
       <button class="icon-btn burger" aria-label="Mở menu" aria-expanded="false">{ICON['menu']}</button>
-      <a class="logo" href="{root}" aria-label="{e(SITE['name'])} – Trang chủ">{LOGO}<span>Học<b>Free</b></span></a>
+      <a class="logo" href="{root}index.html" aria-label="{e(SITE['name'])} – Trang chủ">{LOGO}<span>Học<b>Free</b></span></a>
       <nav class="main-nav" aria-label="Menu chính">
         <ul>{nav}</ul>
       </nav>
@@ -167,13 +167,13 @@ def header(root, active=""):
 
 
 def footer(root):
-    cats = "".join(f'<li><a href="{root}{c["slug"]}/">{e(c["name"])}</a></li>' for c in DATA["categories"])
+    cats = "".join(f'<li><a href="{root}{c["slug"]}/index.html">{e(c["name"])}</a></li>' for c in DATA["categories"])
     latest = "".join(f'<li><a href="{root}{post_url(p)}">{e(p["title"])}</a></li>' for p in POSTS[:4])
     year = date.today().year
     return f"""<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-about">
-      <a class="logo" href="{root}">{LOGO}<span>Học<b>Free</b></span></a>
+      <a class="logo" href="{root}index.html">{LOGO}<span>Học<b>Free</b></span></a>
       <p>{e(SITE['description'])}</p>
     </div>
     <div>
@@ -207,7 +207,7 @@ def footer(root):
 
 # ---------------------------------------------------------------- thành phần
 def cat_pill(root, p, cls="pill"):
-    return f'<a class="{cls} cat-{p["category"]}" href="{root}{p["category"]}/">{e(p["cat"]["name"])}</a>'
+    return f'<a class="{cls} cat-{p["category"]}" href="{root}{p["category"]}/index.html">{e(p["cat"]["name"])}</a>'
 
 
 def meta(p, author=False):
@@ -256,7 +256,7 @@ def sidebar(root, current=None):
         f'<li><a href="{root}{post_url(p)}"><span class="num">{i}</span><span class="t">{e(p["title"])}</span></a></li>'
         for i, p in enumerate(popular, 1))
     cats = "".join(
-        f'<li><a href="{root}{c["slug"]}/"><span>{e(c["name"])}</span><span class="count">'
+        f'<li><a href="{root}{c["slug"]}/index.html"><span>{e(c["name"])}</span><span class="count">'
         f'{sum(1 for p in POSTS if p["category"] == c["slug"])}</span></a></li>'
         for c in DATA["categories"])
     tags = sorted({t for p in POSTS for t in p["tags"]}, key=str.lower)
@@ -300,7 +300,7 @@ def build_home():
             f'<li><a href="{post_url(p)}">{e(p["title"])}</a><time datetime="{p["date"]}">{fmt_date(p["date"])}</time></li>'
             for p in rest)
         blocks += f"""<section class="cat-block cat-{c['slug']}">
-  {section_title(c['name'], c['slug'] + '/')}
+  {section_title(c['name'], c['slug'] + '/index.html')}
   {card(root, first)}
   <ul class="cat-block-list">{items}</ul>
 </section>"""
@@ -344,7 +344,7 @@ def build_category(c):
     page += f"""<main id="main">
   <div class="page-head cat-{c['slug']}">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}">Trang chủ</a><span>/</span><span>{e(c['name'])}</span></nav>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}index.html">Trang chủ</a><span>/</span><span>{e(c['name'])}</span></nav>
       <h1>{e(c['name'])}</h1>
       <p>{e(c['description'])}</p>
       <span class="page-count">{len(ps)} bài viết</span>
@@ -423,7 +423,7 @@ def build_post(p):
     page += f"""<main id="main">
   <div class="container layout article-layout">
     <article class="article">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}">Trang chủ</a><span>/</span><a href="{root}{p['category']}/">{e(p['cat']['name'])}</a></nav>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}index.html">Trang chủ</a><span>/</span><a href="{root}{p['category']}/index.html">{e(p['cat']['name'])}</a></nav>
       <header class="article-head">
         {cat_pill(root, p)}
         <h1>{e(p['title'])}</h1>
@@ -476,7 +476,7 @@ def build_search():
     page += f"""<main id="main">
   <div class="page-head">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}">Trang chủ</a><span>/</span><span>Tìm kiếm</span></nav>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}index.html">Trang chủ</a><span>/</span><span>Tìm kiếm</span></nav>
       <h1>Tìm kiếm</h1>
       <form class="search-form big" action="search.html" role="search">
         {ICON['search']}
@@ -501,7 +501,7 @@ def build_search():
 def build_about():
     root = ""
     counts = "".join(
-        f'<li><a href="{c["slug"]}/"><strong>{e(c["name"])}</strong></a>: {e(c["description"])}</li>'
+        f'<li><a href="{c["slug"]}/index.html"><strong>{e(c["name"])}</strong></a>: {e(c["description"])}</li>'
         for c in DATA["categories"])
     page = head(root, "Giới thiệu", "Giới thiệu về HọcFree.vn – website chia sẻ kiến thức miễn phí.",
                 "gioi-thieu.html", "assets/images/og-default.jpg")
@@ -509,7 +509,7 @@ def build_about():
     page += f"""<main id="main">
   <div class="container layout article-layout">
     <article class="article">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}">Trang chủ</a><span>/</span><span>Giới thiệu</span></nav>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{root}index.html">Trang chủ</a><span>/</span><span>Giới thiệu</span></nav>
       <header class="article-head"><h1>Về HọcFree</h1>
       <p class="lead">Kiến thức là để chia sẻ. HọcFree ra đời với mong muốn ai cũng có thể tự học lập trình và ngoại ngữ mà không phải lo về chi phí.</p></header>
       <div class="prose">
