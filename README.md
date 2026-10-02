@@ -39,14 +39,18 @@ python -m http.server 8000
 ```
 Mở http://localhost:8000
 
-## Trỏ tên miền (Mắt Bão → GitHub Pages)
+## Trỏ tên miền → GitHub Pages
 
-| Loại  | Host | Giá trị                    |
-|-------|------|----------------------------|
-| A     | @    | 185.199.108.153            |
-| A     | @    | 185.199.109.153            |
-| A     | @    | 185.199.110.153            |
-| A     | @    | 185.199.111.153            |
-| CNAME | www  | `<tên-tài-khoản>.github.io` |
+Tên miền mua tại Mắt Bão nhưng nameserver đang là **Cloudflare**
+(`ned.ns.cloudflare.com`, `megan.ns.cloudflare.com`), nên bản ghi DNS phải thêm trong
+Cloudflare → `hocfree.vn` → **DNS → Records** (thêm ở Mắt Bão sẽ không có tác dụng):
+
+| Loại  | Name | Giá trị          | Proxy     |
+|-------|------|------------------|-----------|
+| A     | @    | 185.199.108.153  | DNS only  |
+| A     | @    | 185.199.109.153  | DNS only  |
+| A     | @    | 185.199.110.153  | DNS only  |
+| A     | @    | 185.199.111.153  | DNS only  |
+| CNAME | www  | dbh92.github.io  | DNS only  |
 
 Sau khi DNS cập nhật: GitHub repo → Settings → Pages → Custom domain `hocfree.vn` → bật **Enforce HTTPS**.
